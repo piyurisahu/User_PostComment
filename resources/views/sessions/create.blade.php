@@ -6,18 +6,12 @@
 
 @section('content')
 
-    <div class="col-sm-8 blog-main">
-        <h1>Publis  a Post</h1>
-        <hr>
+    <div class="col-md-8">
+        <h1>Sign In</h1>
 
 
-
-        <form method="post" action="/register">
+        <form method="post" action="/login">
             {{csrf_field()}}
-            <div class="form-group">
-                <label for="title">name</label>
-                <input type="text" class="form-control" id="name" name="name">
-            </div>
 
             <div class="form-group">
                 <label for="title">email</label>
@@ -29,15 +23,12 @@
                 <input type="password" class="form-control" id="password" name="password">
             </div>
 
-            <div class="form-group">
-                <label for="password_confirmation">password</label>
-                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
-            </div>
 
-            <button type="submit" class="btn btn-primary">Publish</button>
+            <button type="submit" class="btn btn-primary">Sign In</button>
+            @include('layouts.errors')
         </form>
     </div>
 
-    @include('layouts.errors')
+
 
 @endsection

@@ -20,7 +20,7 @@
 
                 <li class="list-group-item">
                     <strong>{{ $comment->created_at }}</strong>
-                    {{$comment->body}}
+                    : {{$comment->body}}
                 </li>
         @endforeach
         </ul>
@@ -34,7 +34,9 @@
     <hr>
     <div class="card">
         <div class="card-block">
-            <form>
+            <form method="POST" action="/posts/{{ $post->id }}/comments">
+
+                {{csrf_field()}}
                 <div class="form-group">
                     <textarea name="body" placeholder="Your comment here " class="form-control"></textarea>
                 </div>
@@ -42,9 +44,11 @@
                 <div class="form-group">
                 <button type="submit" class="btn btn-primary">Add Comments </button>
                 </div>
-            </form>
+
             </form>
         </div>
+
+        @include('layouts.errors')
         </div>
     </div>
 

@@ -7,6 +7,20 @@
 
     <div class="container">
 
+
+
+        <div class="comments">
+
+            <ul class="list-group">
+                @foreach($posts as $post)
+
+                    
+                    @include('posts.post')
+                @endforeach
+            </ul>
+        </div>
+    </div>
+
         <div class="row">
 
             <div class="col-sm-8 blog-main">

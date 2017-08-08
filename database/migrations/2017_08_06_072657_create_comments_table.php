@@ -15,6 +15,7 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function ($table) {
             $table->increments('id');
+            $table->integer('user_id');
             $table->integer('post_id')->unsigned();
             $table->foreign('post_id')->references('id')->on('posts');
             $table->text('body');

@@ -9,21 +9,31 @@ class PostController extends Controller
 {
     //
 
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['show','index']);
+    }
+
     public function index()
     {
-        return view('posts.index');
+
+        $posts=Post::all();
+        return view('posts.index',compact('posts'));
     }
 
     public function show(Post $post)
     {
+
+
+           return view('posts.show',compact('post'));
+
 
 //        $post = Post::find($id);
 //       if($post!=null)
 //        return view('posts.show', ['post' => $post ]);
 //
 //       else
-
-           return view('posts.show',compact('post'));
 //        return view('posts.show', ['name' => 'James']);
     }
 
@@ -41,7 +51,11 @@ class PostController extends Controller
         ]);
 
 
-    Post::create(request(['title','body']));
+        auth()->user()->publish(
+            new Post(request(['title','body']))
+        );
+
+
         return redirect('/');
 
     }
